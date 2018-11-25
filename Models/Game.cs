@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace final_challenge.Models
 {
@@ -8,8 +10,10 @@ namespace final_challenge.Models
         public int GameId { get; set;}
         public DateTime Date { get; set; }
 
+        [DisplayName("Court Fee")]
         public double CourtFee { get; set; }
-        
+
+        [DisplayName("Paid By")]
 	    public Member PaidBy { get; set; }
 	    public string Location { get; set; }
 
