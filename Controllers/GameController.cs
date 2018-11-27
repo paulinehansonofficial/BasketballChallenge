@@ -22,7 +22,7 @@ namespace final_challenge.Controllers
         // GET: Game
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Games.ToListAsync());
+            return View(await _context.Games.Where(g => g.Date > DateTime.Now).ToListAsync());
         }
 
         // GET: Game/Details/5
@@ -150,17 +150,10 @@ namespace final_challenge.Controllers
             return _context.Games.Any(e => e.GameId == id);
         }
 
-        // // GET: PastGames
-        // public async Task<IActionResult> PastGames()
-        // {
-        //     DateTime time = DateTime.Now;
-
-        //     foreach (Game g in _context.Games)
-        //     {
-        //         //if(time < )
-        //     }
-
-        //     return View(await _context.Games.ToListAsync());
-        // }
+        // GET: PastGames
+        public async Task<IActionResult> PastGames()
+        {
+            return View(await _context.Games.Where(g => g.Date < DateTime.Now).ToListAsync());
+        }
     }
 }
