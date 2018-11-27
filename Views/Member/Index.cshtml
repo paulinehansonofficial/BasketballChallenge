@@ -21,6 +21,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.TotalSpend)
             </th>
+            <th></th>
             <th>
                 @Html.DisplayNameFor(model => model.Status)
             </th>
@@ -37,7 +38,11 @@
                 @Html.DisplayFor(modelItem => item.LastName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TotalSpend)
+                @Html.DisplayFor(modelItem => item.TotalSpend) 
+            </td>
+            <td>
+                <a asp-action="ListPaid" asp-route-id="@item.Id">See All</a>
+                <span></span> 
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Status)

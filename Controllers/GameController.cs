@@ -149,5 +149,18 @@ namespace final_challenge.Controllers
         {
             return _context.Games.Any(e => e.GameId == id);
         }
+
+        // // GET: PastGames
+        // public async Task<IActionResult> PastGames()
+        // {
+        //     DateTime time = DateTime.Now;
+
+        //     foreach (Game g in _context.Games)
+        //     {
+        //         //if(time < )
+        //     }
+
+        //     return View(await _context.Games.ToListAsync());
+        // }
     }
 }
