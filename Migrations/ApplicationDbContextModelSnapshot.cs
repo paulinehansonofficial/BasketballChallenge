@@ -28,11 +28,9 @@ namespace finalchallenge.Migrations
 
                     b.Property<string>("Location");
 
-                    b.Property<string>("PaidById");
+                    b.Property<string>("PaidBy");
 
                     b.HasKey("GameId");
-
-                    b.HasIndex("PaidById");
 
                     b.ToTable("Games");
                 });
@@ -237,13 +235,6 @@ namespace finalchallenge.Migrations
                     b.ToTable("Member");
 
                     b.HasDiscriminator().HasValue("Member");
-                });
-
-            modelBuilder.Entity("final_challenge.Models.Game", b =>
-                {
-                    b.HasOne("final_challenge.Models.Member", "PaidBy")
-                        .WithMany()
-                        .HasForeignKey("PaidById");
                 });
 
             modelBuilder.Entity("final_challenge.Models.MemberGame", b =>

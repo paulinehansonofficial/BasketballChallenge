@@ -14,7 +14,7 @@ namespace final_challenge.Models
         public double CourtFee { get; set; }
 
         [DisplayName("Paid By")]
-	    public Member PaidBy { get; set; }
+	    public string PaidBy { get; set; }
 	    public string Location { get; set; }
 
         public ICollection<MemberGame> Players { get; set; }

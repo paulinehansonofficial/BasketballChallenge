@@ -86,7 +86,7 @@ namespace final_challenge.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("GameId,Date,CourtFee,Location")] Game game)
+        public async Task<IActionResult> Edit(int id, [Bind("GameId,Date,CourtFee,Location,PaidBy")] Game game)
         {
             if (id != game.GameId)
             {

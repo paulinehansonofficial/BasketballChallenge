@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace finalchallenge.Migrations
 {
-    public partial class initial : Migration
+    public partial class changingPaidBy : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -49,6 +49,22 @@ namespace finalchallenge.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Games",
+                columns: table => new
+                {
+                    GameId = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Date = table.Column<DateTime>(nullable: false),
+                    CourtFee = table.Column<double>(nullable: false),
+                    PaidBy = table.Column<string>(nullable: true),
+                    Location = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Games", x => x.GameId);
                 });
 
             migrationBuilder.CreateTable(
@@ -158,28 +174,6 @@ namespace finalchallenge.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Games",
-                columns: table => new
-                {
-                    GameId = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Date = table.Column<DateTime>(nullable: false),
-                    CourtFee = table.Column<double>(nullable: false),
-                    PaidById = table.Column<string>(nullable: true),
-                    Location = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Games", x => x.GameId);
-                    table.ForeignKey(
-                        name: "FK_Games_AspNetUsers_PaidById",
-                        column: x => x.PaidById,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "MemberGame",
                 columns: table => new
                 {
@@ -240,11 +234,6 @@ namespace finalchallenge.Migrations
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Games_PaidById",
-                table: "Games",
-                column: "PaidById");
 
             migrationBuilder.CreateIndex(
                 name: "IX_MemberGame_GameId",

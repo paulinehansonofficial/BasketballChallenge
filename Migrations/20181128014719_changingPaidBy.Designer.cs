@@ -10,8 +10,8 @@ using final_challenge.Models;
 namespace finalchallenge.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20181127115345_initial")]
-    partial class initial
+    [Migration("20181128014719_changingPaidBy")]
+    partial class changingPaidBy
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -30,11 +30,9 @@ namespace finalchallenge.Migrations
 
                     b.Property<string>("Location");
 
-                    b.Property<string>("PaidById");
+                    b.Property<string>("PaidBy");
 
                     b.HasKey("GameId");
-
-                    b.HasIndex("PaidById");
 
                     b.ToTable("Games");
                 });
@@ -239,13 +237,6 @@ namespace finalchallenge.Migrations
                     b.ToTable("Member");
 
                     b.HasDiscriminator().HasValue("Member");
-                });
-
-            modelBuilder.Entity("final_challenge.Models.Game", b =>
-                {
-                    b.HasOne("final_challenge.Models.Member", "PaidBy")
-                        .WithMany()
-                        .HasForeignKey("PaidById");
                 });
 
             modelBuilder.Entity("final_challenge.Models.MemberGame", b =>
