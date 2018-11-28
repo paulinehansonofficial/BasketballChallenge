@@ -86,12 +86,16 @@ namespace final_challenge.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("FirstName,LastName,TotalSpend,Status,Id,UserName,NormalizedUserName,Email,NormalizedEmail,EmailConfirmed,PasswordHash,SecurityStamp,ConcurrencyStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEnd,LockoutEnabled,AccessFailedCount")] Member member)
+        public async Task<IActionResult> Edit(string id, [Bind("FirstName,LastName,Status")] Member member)
         {
-            if (id != member.Id)
-            {
-                return NotFound();
-            }
+
+            // if (id != member.Id)
+            // {
+            //     Console.WriteLine(member.Id);
+            //     Console.WriteLine(id);
+                
+            //     return NotFound();
+            // }
 
             if (ModelState.IsValid)
             {
@@ -102,14 +106,7 @@ namespace final_challenge.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!MemberExists(member.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                    throw;
                 }
                 return RedirectToAction(nameof(Index));
             }

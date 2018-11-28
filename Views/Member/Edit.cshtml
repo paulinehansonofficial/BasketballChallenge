@@ -25,8 +25,8 @@
             <div class="form-group">
                 <label asp-for="Status" class="control-label"></label>
                 <select asp-for="Status" class="form-control">
-                    <option>Pending</option>
-                    <option>Approved</option>
+                    <option value="@MemberStatus.Pending">Pending</option>
+                    <option value="@MemberStatus.Approved">Approved</option>
                 </select>
                 <span asp-validation-for="Status" class="text-danger"></span>
             </div>
